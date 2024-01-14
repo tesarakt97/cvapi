@@ -1,6 +1,7 @@
 package com.example.cvapi.steps.requests;
 
 import com.example.cvapi.data.enums.StatusCode;
+import io.qameta.allure.Step;
 import io.restassured.path.json.JsonPath;
 import io.restassured.specification.RequestSpecification;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +13,7 @@ import static io.restassured.RestAssured.given;
 @Slf4j
 public abstract class BaseRequestStep {
 
+    @Step("Выполнить GET запрос по адресу {endPoint}")
     protected String doGetRequest(String endPoint, StatusCode statusCode, RequestSpecification requestSpec) {
         JsonPath jsonPath = new JsonPath(
                 given().log().uri()
@@ -25,6 +27,7 @@ public abstract class BaseRequestStep {
         return jsonPath.prettify();
     }
 
+    @Step("Выполнить GET запрос по адресу {endPoint}")
     protected String doGetRequestWithParam(String endPoint, Map<String, String> pathParams, StatusCode statusCode,
                                            RequestSpecification requestSpec) {
         JsonPath jsonPath = new JsonPath(

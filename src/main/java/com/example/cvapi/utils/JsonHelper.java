@@ -24,7 +24,6 @@ public class JsonHelper<T> {
     public List<T> transFormToListObject(String jsonString, Class<T> tClass) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-//            return Collections.singletonList(objectMapper.readValue(jsonString, tClass));
             return objectMapper.readValue(jsonString, objectMapper.getTypeFactory().constructCollectionType(List.class, tClass));
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
