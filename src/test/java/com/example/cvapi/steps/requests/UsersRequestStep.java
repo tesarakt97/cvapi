@@ -7,6 +7,7 @@ import com.example.cvapi.data.enums.StatusCode;
 import com.example.cvapi.utils.JsonHelper;
 import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ public class UsersRequestStep extends BaseRequestStep {
     JsonHelper<UserDTO> jsonHelper;
 
     @Step("Получить пользователя")
+    @DisplayName("Проверка")
     public UserDTO getUserById(int userId, RequestSpec requestSpec) {
         Map<String, String> param = new HashMap<>();
         param.put("id", String.valueOf(userId));
@@ -41,12 +43,12 @@ public class UsersRequestStep extends BaseRequestStep {
     }
 
     @Step("Получить всех пользователей (короткий список)")
-//Получение для короткого списка (первые 4) из-за того что список очень длинный
+    //Получение для короткого списка (первые 4) из-за того что список очень длинный
     public List<UserDTO> getUsersShortList(RequestSpec requestSpec) {
         Map<String, String> param = new HashMap<>();
         param.put("limit", String.valueOf(4));
         return jsonHelper.transFormToListObject(
-                doGetRequestWithParam(userEndPoints.USERS, param, StatusCode.OK,
+                doGetRequestWithQueryParam(userEndPoints.USERS, param, StatusCode.OK,
                         requestSpec.requestSpecification), UserDTO.class);
     }
 }

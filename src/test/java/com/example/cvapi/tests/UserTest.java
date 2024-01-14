@@ -21,10 +21,11 @@ public class UserTest extends BaseTest {
     @Autowired
     private UserAssertionStep userAssertionStep;
 
-    UserConstant userConstant = new UserConstant();
+    @Autowired
+    private UserConstant userConstant;
 
     @Test
-    @DisplayName("Получение списка пользователей")
+    @DisplayName("Получение пользователя по id")
     void getPersonTest() {
         UserDTO testUser = personsRequestStep.getUserById(1, requestSpec);
         userAssertionStep.assertUser(userConstant.getUserForAssert(), testUser);

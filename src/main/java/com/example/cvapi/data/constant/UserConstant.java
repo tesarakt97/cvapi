@@ -2,12 +2,14 @@ package com.example.cvapi.data.constant;
 
 import com.example.cvapi.data.dto.UserDTO;
 import lombok.Getter;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Getter
+@Component
 public class UserConstant {
 
     UserDTO userForAssert = new UserDTO(1, "Jerry", "Parker", "CF", 45);

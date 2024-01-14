@@ -31,7 +31,7 @@ public abstract class BaseRequestStep {
                 given().log().uri()
                         .spec(requestSpec)
                         .when()
-                        .queryParams(pathParams)
+                        .pathParams(pathParams)
                         .get(endPoint)
                         .then()
                         .statusCode(statusCode.getStatusCode())
