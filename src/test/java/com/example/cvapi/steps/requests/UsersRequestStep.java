@@ -24,7 +24,7 @@ public class UsersRequestStep extends BaseRequestStep {
     @Autowired
     JsonHelper<UserDTO> jsonHelper;
 
-    @Step("")
+    @Step("Получить пользователя")
     public UserDTO getUserById(int userId, RequestSpec requestSpec) {
         Map<String, String> param = new HashMap<>();
         param.put("id", String.valueOf(userId));
